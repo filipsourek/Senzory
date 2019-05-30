@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+<ItemGroup>
+<PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
+<PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
+<PackageReference Include="Syncfusion.Xamarin.SfGauge" Version="17.1.0.47" />
+<PackageReference Include="Syncfusion.Xamarin.SfGauge" Version="17.1.0.49" />
+
+
+</ItemGroup>
+
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="App.xaml.cs">
+      <DependentUpon>*.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
+      <DependentUpon>*.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>
