@@ -23,11 +23,14 @@ namespace Senzory
 
             var homePage = new PageItem() { Title = "Home Page", Icon = "", TargetType = typeof(HomePage) };
             var accelerometerPage = new PageItem() { Title = "Accelerometer", Icon = "", TargetType = typeof(AccelerometerPage) };
+            var barometerPage = new PageItem() { Title = "Barometer", Icon = "", TargetType = typeof(BarometerPage) };
 
 
 
             MenuList.Add(homePage);
             MenuList.Add(accelerometerPage);
+            MenuList.Add(barometerPage);
+
 
 
 
