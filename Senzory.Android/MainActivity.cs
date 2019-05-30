@@ -16,7 +16,7 @@ using Android.OS;
 
 namespace Senzory.Android
 {
-    [Activity(Label = "Senzory", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Senzory", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -25,6 +25,8 @@ namespace Senzory.Android
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
+
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTA0NjI0QDMxMzcyZTMxMmUzMGY3MWw2ZGwvcjBTVGpnOG1KaDZMWE5XakFpL1gxb3d6VlJIZ3N4ekFCNk09");
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());

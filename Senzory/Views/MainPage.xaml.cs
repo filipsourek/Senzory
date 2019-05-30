@@ -22,10 +22,14 @@ namespace Senzory
             MenuList = new List<PageItem>();
 
             var homePage = new PageItem() { Title = "Home Page", Icon = "", TargetType = typeof(HomePage) };
- 
+            var accelerometerPage = new PageItem() { Title = "Accelerometer", Icon = "", TargetType = typeof(AccelerometerPage) };
+
+
 
             MenuList.Add(homePage);
-   
+            MenuList.Add(accelerometerPage);
+
+
 
             navigationDrawerList.ItemsSource = MenuList;
 
