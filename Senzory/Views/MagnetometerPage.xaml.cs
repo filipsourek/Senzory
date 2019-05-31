@@ -15,9 +15,13 @@ namespace Senzory.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MagnetometerPage : ContentPage
     {
+
         NeedlePointer needlePointer;
         public MagnetometerPage()
         {
+            Icon = "Magnetometer";
+            Title = "Magnetometer";
+
             InitializeComponent();
             SfCircularGauge circularGauge = new SfCircularGauge();
 

@@ -15,10 +15,15 @@ namespace Senzory.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BarometerPage : ContentPage
     {
+
         NeedlePointer needlePointer;
         Label test;
         public BarometerPage()
         {
+            Icon = "Barometer";
+            Title = "Barometer";
+
+
             InitializeComponent();
             SfCircularGauge circularGauge = new SfCircularGauge();
 
