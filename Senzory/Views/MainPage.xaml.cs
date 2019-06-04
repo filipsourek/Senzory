@@ -27,11 +27,13 @@ namespace Senzory
             var gyroscoperPage = new PageItem() { Title = "Gyroscope", Icon = "", TargetType = typeof(GyroscopePage) };
             var magnetometerPage = new PageItem() { Title = "Magnetometer", Icon = "", TargetType = typeof(MagnetometerPage) };
 
+
             MenuList.Add(homePage);
             MenuList.Add(accelerometerPage);
             MenuList.Add(barometerPage);
             MenuList.Add(gyroscoperPage);
             MenuList.Add(magnetometerPage);
+
 
             navigationDrawerList.ItemsSource = MenuList;
 

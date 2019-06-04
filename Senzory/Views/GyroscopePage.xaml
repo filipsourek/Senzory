@@ -4,6 +4,91 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Senzory.Views.GyroscopePage">
+             xmlns:gauge="clr-namespace:Syncfusion.SfGauge.XForms;assembly=Syncfusion.SfGauge.XForms"      
+             xmlns:local="clr-namespace:Senzory;assembly=Senzory"
+             xmlns:viewModel="clr-namespace:Senzory.ViewModel;assembly=Senzory"        
+             x:Class="Senzory.Views.GyroscopePage"
+             Title="Gyroscope">
 
+    <ContentPage.BindingContext>
+        <viewModel:GyroscopeViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="6*" />
+                <RowDefinition Height="6*" />
+                <RowDefinition Height="6*" />
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Command="{Binding AngularVelocityStartCommand}" HeightRequest="25" WidthRequest="80" CornerRadius="5" Text="Start" />
+                <Button Command="{Binding AngularVelocityStopCommand}" Margin="20,0,0,0" HeightRequest="25" WidthRequest="80" CornerRadius="5" Text="Stop" />
+            </StackLayout>
+
+            <Grid Grid.Row="1" x:Name="gaugeGrid">
+                <gauge:SfCircularGauge x:Name="circularGauge">
+                    <gauge:SfCircularGauge.Scales>
+                        <gauge:Scale StartValue="-2.5" EndValue="2.5">
+                            <gauge:Scale.MajorTickSettings>
+                                <gauge:TickSettings Color="Black" />
+                            </gauge:Scale.MajorTickSettings>
+                            <gauge:Scale.MinorTickSettings>
+                                <gauge:TickSettings Color="Black" Thickness="2" />
+                            </gauge:Scale.MinorTickSettings>
+                            <gauge:Scale.Pointers>
+                                <gauge:NeedlePointer Value="{Binding XAngularVelocityValue}" Color="Black" />
+                            </gauge:Scale.Pointers>
+                        </gauge:Scale>
+                    </gauge:SfCircularGauge.Scales>
+                    <gauge:SfCircularGauge.Headers>
+                        <gauge:Header Text="{Binding XAngularVelocityValue,StringFormat='X = {0:F1}'}" ForegroundColor="DarkGray" FontAttributes="Bold" Position="0.5,0.75" />
+                    </gauge:SfCircularGauge.Headers>
+                </gauge:SfCircularGauge>
+            </Grid>
+
+            <Grid Grid.Row="2" x:Name="gaugeGrid1">
+                <gauge:SfCircularGauge x:Name="circularGauge1">
+                    <gauge:SfCircularGauge.Scales>
+                        <gauge:Scale StartValue="-2.5" EndValue="2.5">
+                            <gauge:Scale.MajorTickSettings>
+                                <gauge:TickSettings Color="Black" />
+                            </gauge:Scale.MajorTickSettings>
+                            <gauge:Scale.MinorTickSettings>
+                                <gauge:TickSettings Color="Black" />
+                            </gauge:Scale.MinorTickSettings>
+                            <gauge:Scale.Pointers>
+                                <gauge:NeedlePointer Value="{Binding YAngularVelocityValue}"  Color="Black"  />
+                            </gauge:Scale.Pointers>
+                        </gauge:Scale>
+                    </gauge:SfCircularGauge.Scales>
+                    <gauge:SfCircularGauge.Headers>
+                        <gauge:Header Text="{Binding YAngularVelocityValue,StringFormat='Y = {0:F2}'}" ForegroundColor="DarkGray" FontAttributes="Bold" Position="0.5,0.75" />
+                    </gauge:SfCircularGauge.Headers>
+                </gauge:SfCircularGauge>
+            </Grid>
+
+            <Grid Grid.Row="3" x:Name="gaugeGrid2">
+                <gauge:SfCircularGauge x:Name="circularGauge2">
+                    <gauge:SfCircularGauge.Scales>
+                        <gauge:Scale StartValue="-2.5" EndValue="2.5">
+                            <gauge:Scale.MajorTickSettings>
+                                <gauge:TickSettings Color="Black" />
+                            </gauge:Scale.MajorTickSettings>
+                            <gauge:Scale.MinorTickSettings>
+                                <gauge:TickSettings Color="Black" />
+                            </gauge:Scale.MinorTickSettings>
+                            <gauge:Scale.Pointers>
+                                <gauge:NeedlePointer Value="{Binding ZAngularVelocityValue}" Color="Black" />
+                            </gauge:Scale.Pointers>
+                        </gauge:Scale>
+                    </gauge:SfCircularGauge.Scales>
+                    <gauge:SfCircularGauge.Headers>
+                        <gauge:Header Text="{Binding ZAngularVelocityValue,StringFormat='Z = {0:F2}'}" ForegroundColor="DarkGray" FontAttributes="Bold" Position="0.5,0.75" />
+                    </gauge:SfCircularGauge.Headers>
+                </gauge:SfCircularGauge>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>
