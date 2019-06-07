@@ -15,34 +15,41 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
+        <!-- Vytvoření gridu  -->
         <Grid>
+            <!-- Šířka řádku pro jednotlivé řádky  -->
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*" />
                 <RowDefinition Height="20*" />
-
             </Grid.RowDefinitions>
+            <!-- Vytvoření tlačítek pro start a stop | nastavený binding na ně  -->
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Button Command="{Binding StartCommand}" HeightRequest="25" WidthRequest="80" CornerRadius="5" Text="Start" />
-                <Button Command="{Binding MagneticFieldStopCommand}" Margin="20,0,0,0" HeightRequest="25" WidthRequest="80" CornerRadius="5" Text="Stop" />
+                <Button Command="{Binding PressureInHectopascalsStartCommand}" HeightRequest="25" WidthRequest="80" CornerRadius="5" Text="Start" />
+                <Button Command="{Binding PressureInHectopascalsStopCommand}" Margin="20,0,0,0" HeightRequest="25" WidthRequest="80" CornerRadius="5" Text="Stop" />
             </StackLayout>
-
+            <!-- Vytvoření prvního budíku   -->
+            <!-- Nastavení pozice v gridu  -->
             <Grid Grid.Row="1" x:Name="gaugeGrid">
                 <gauge:SfCircularGauge x:Name="circularGauge">
                     <gauge:SfCircularGauge.Scales>
+                        <!--  Nasavení rozsahu budíku -->
                         <gauge:Scale StartValue="800" EndValue="1200">
+                            <!-- Nastavení barev pro jednotlivé části budíku  -->
                             <gauge:Scale.MajorTickSettings>
                                 <gauge:TickSettings Color="Black" />
                             </gauge:Scale.MajorTickSettings>
                             <gauge:Scale.MinorTickSettings>
                                 <gauge:TickSettings Color="Black" Thickness="2" />
                             </gauge:Scale.MinorTickSettings>
+                            <!-- Bindování hodnoty pro ukazetel  -->
                             <gauge:Scale.Pointers>
-                                <gauge:NeedlePointer Value="{Binding Result}" Color="Black" />
+                                <gauge:NeedlePointer Value="{Binding PressureInHectopascals}" Color="Black" />
                             </gauge:Scale.Pointers>
                         </gauge:Scale>
                     </gauge:SfCircularGauge.Scales>
+                    <!-- Vytvoření popisu budíku (bindování hodnoty v digitální podobě)  -->
                     <gauge:SfCircularGauge.Headers>
-                        <gauge:Header Text="{Binding Result,StringFormat='X = {0:F1}'}" ForegroundColor="DarkGray" FontAttributes="Bold" Position="0.5,0.75" />
+                        <gauge:Header Text="{Binding PressureInHectopascalsValue,StringFormat='X = {0:F1}'}" ForegroundColor="DarkGray" FontAttributes="Bold" Position="0.5,0.75" />
                     </gauge:SfCircularGauge.Headers>
                 </gauge:SfCircularGauge>
             </Grid>

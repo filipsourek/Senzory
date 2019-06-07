@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Senzory.Model;
 
 
 namespace Senzory.ViewModel
@@ -12,14 +11,9 @@ namespace Senzory.ViewModel
     public class MagnetometerViewModel : INotifyPropertyChanged
     {
         private double xMagneticFieldValue, yMagneticFieldValue, zMagneticFieldValue, result;
-        //private MagnetometerModel magnetometerModel;
-
-        //public Command PrevodNaStupne { get; private set; }
 
         public MagnetometerViewModel()
         {
-            //PrevodNaStupne = new Command(Stupne);
-            //magnetometerModel = new MagnetometerModel();
             MagneticFieldStartCommand = new Command((object speed) =>
             {
                 if (!Magnetometer.IsMonitoring)
@@ -44,14 +38,6 @@ namespace Senzory.ViewModel
 
 
         }
-
-        /*
-        private void Stupne()
-        {
-            Vypis(magnetometerModel.PrevodNaStupne(XMagneticFieldValue, yMagneticFieldValue));
-        }
-        */
-        
 
         public double Result
         {
@@ -95,9 +81,9 @@ namespace Senzory.ViewModel
             }
         }
 
-        public ICommand MagneticFieldStopCommand { get; set; }
+        public Command MagneticFieldStopCommand { get; set; }
 
-        public ICommand MagneticFieldStartCommand { get; set; }
+        public Command MagneticFieldStartCommand { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

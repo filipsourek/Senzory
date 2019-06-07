@@ -75,9 +75,9 @@ namespace Senzory.ViewModel
         }
 
 
-        public ICommand AngularVelocityStopCommand { get; set; }
+        public Command AngularVelocityStopCommand { get; set; }
 
-        public ICommand AngularVelocityStartCommand { get; set; }
+        public Command AngularVelocityStartCommand { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

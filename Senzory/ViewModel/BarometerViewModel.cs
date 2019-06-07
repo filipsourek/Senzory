@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Senzory.Model;
 
 
 namespace Senzory.ViewModel
@@ -51,9 +50,9 @@ namespace Senzory.ViewModel
             }
         }
 
-        public ICommand PressureInHectopascalsStopCommand { get; set; }
+        public Command PressureInHectopascalsStopCommand { get; set; }
 
-        public ICommand PressureInHectopascalsStartCommand { get; set; }
+        public Command PressureInHectopascalsStartCommand { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

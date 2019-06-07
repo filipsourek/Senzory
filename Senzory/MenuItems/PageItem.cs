@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Senzory.MenuItems
 {
-
     public class PageItem
     {
         public string Title { get; set; }

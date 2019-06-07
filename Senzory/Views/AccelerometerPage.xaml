@@ -9,81 +9,99 @@
              xmlns:viewModel="clr-namespace:Senzory.ViewModel;assembly=Senzory"        
              x:Class="Senzory.Views.AccelerometerPage"
              Title="Accelerometer">
-
+    <!-- Binding Context pro možnost bindování  -->
     <ContentPage.BindingContext>
         <viewModel:AccelerometerViewModel/>
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
+        <!-- Vytvoření gridu  -->
         <Grid>
+            <!-- Šířka řádku pro jednotlivé řádky  -->
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*" />
                 <RowDefinition Height="6*" />
                 <RowDefinition Height="6*" />
                 <RowDefinition Height="6*" />
             </Grid.RowDefinitions>
+            <!-- Vytvoření tlačítek pro start a stop | nastavený binding na ně  -->
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Button Command="{Binding AccerelationStartCommand}" HeightRequest="25" WidthRequest="80" CornerRadius="5" Text="Start" />
                 <Button Command="{Binding AccerelationStopCommand}" Margin="20,0,0,0" HeightRequest="25" WidthRequest="80" CornerRadius="5" Text="Stop" />
             </StackLayout>
-
+            <!-- Vytvoření prvního budíku pro X osu  -->
+            <!-- Nastavení pozice v gridu  -->
             <Grid Grid.Row="1" x:Name="gaugeGrid">
                 <gauge:SfCircularGauge x:Name="circularGauge">
+                    <!--  Nasavení rozsahu budíku -->
                     <gauge:SfCircularGauge.Scales>
                         <gauge:Scale StartValue="-2.5" EndValue="2.5">
+                            <!-- Nastavení barev pro jednotlivé části budíku  -->
                             <gauge:Scale.MajorTickSettings>
                                 <gauge:TickSettings Color="Black" />
                             </gauge:Scale.MajorTickSettings>
                             <gauge:Scale.MinorTickSettings>
                                 <gauge:TickSettings Color="Black" Thickness="2" />
                             </gauge:Scale.MinorTickSettings>
+                            <!-- Bindování hodnoty pro ukazetel  -->
                             <gauge:Scale.Pointers>
                                 <gauge:NeedlePointer Value="{Binding XAccelerationValue}" Color="Black" />
                             </gauge:Scale.Pointers>
                         </gauge:Scale>
                     </gauge:SfCircularGauge.Scales>
+                    <!-- Vytvoření popisu budíku (bindování hodnoty v digitální podobě)  -->
                     <gauge:SfCircularGauge.Headers>
                         <gauge:Header Text="{Binding XAccelerationValue,StringFormat='X = {0:F1}'}" ForegroundColor="DarkGray" FontAttributes="Bold" Position="0.5,0.75" />
                     </gauge:SfCircularGauge.Headers>
                 </gauge:SfCircularGauge>
             </Grid>
-
+            <!-- Vytvoření prvního budíku pro Y osu  -->
+            <!-- Nastavení pozice v gridu  -->
             <Grid Grid.Row="2" x:Name="gaugeGrid1">
                 <gauge:SfCircularGauge x:Name="circularGauge1">
+                    <!--  Nasavení rozsahu budíku -->
                     <gauge:SfCircularGauge.Scales>
                         <gauge:Scale StartValue="-2.5" EndValue="2.5">
+                            <!-- Nastavení barev pro jednotlivé části budíku  -->
                             <gauge:Scale.MajorTickSettings>
                                 <gauge:TickSettings Color="Black" />
                             </gauge:Scale.MajorTickSettings>
                             <gauge:Scale.MinorTickSettings>
                                 <gauge:TickSettings Color="Black" />
                             </gauge:Scale.MinorTickSettings>
+                            <!-- Bindování hodnoty pro ukazetel  -->
                             <gauge:Scale.Pointers>
                                 <gauge:NeedlePointer Value="{Binding YAccelerationValue}"  Color="Black"  />
                             </gauge:Scale.Pointers>
                         </gauge:Scale>
                     </gauge:SfCircularGauge.Scales>
+                    <!-- Vytvoření popisu budíku (bindování hodnoty v digitální podobě)  -->
                     <gauge:SfCircularGauge.Headers>
                         <gauge:Header Text="{Binding YAccelerationValue,StringFormat='Y = {0:F2}'}" ForegroundColor="DarkGray" FontAttributes="Bold" Position="0.5,0.75" />
                     </gauge:SfCircularGauge.Headers>
                 </gauge:SfCircularGauge>
             </Grid>
-
+            <!-- Vytvoření prvního budíku pro Z osu  -->
+            <!-- Nastavení pozice v gridu  -->
             <Grid Grid.Row="3" x:Name="gaugeGrid2">
                 <gauge:SfCircularGauge x:Name="circularGauge2">
+                    <!--  Nasavení rozsahu budíku -->
                     <gauge:SfCircularGauge.Scales>
                         <gauge:Scale StartValue="-2.5" EndValue="2.5">
+                            <!-- Nastavení barev pro jednotlivé části budíku  -->
                             <gauge:Scale.MajorTickSettings>
                                 <gauge:TickSettings Color="Black" />
                             </gauge:Scale.MajorTickSettings>
                             <gauge:Scale.MinorTickSettings>
                                 <gauge:TickSettings Color="Black" />
                             </gauge:Scale.MinorTickSettings>
+                            <!-- Bindování hodnoty pro ukazetel  -->
                             <gauge:Scale.Pointers>
                                 <gauge:NeedlePointer Value="{Binding ZAccelerationValue}" Color="Black" />
                             </gauge:Scale.Pointers>
                         </gauge:Scale>
                     </gauge:SfCircularGauge.Scales>
+                    <!-- Vytvoření popisu budíku (bindování hodnoty v digitální podobě)  -->
                     <gauge:SfCircularGauge.Headers>
                         <gauge:Header Text="{Binding ZAccelerationValue,StringFormat='Z = {0:F2}'}" ForegroundColor="DarkGray" FontAttributes="Bold" Position="0.5,0.75" />
                     </gauge:SfCircularGauge.Headers>

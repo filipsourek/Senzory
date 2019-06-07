@@ -12,7 +12,7 @@ namespace Senzory
 
     public partial class MainPage : MasterDetailPage
     {
-
+        //List kam se ukládají jednotlivé stránky
         public List<PageItem> MenuList { get; set; }
 
         public MainPage()
@@ -21,13 +21,14 @@ namespace Senzory
 
             MenuList = new List<PageItem>();
 
-            var homePage = new PageItem() { Title = "Home Page", Icon = "", TargetType = typeof(HomePage) };
-            var accelerometerPage = new PageItem() { Title = "Accelerometer", Icon = "", TargetType = typeof(AccelerometerPage) };
+            //Vytvoøení jednotlivých stránek
+            var homePage = new PageItem() { Title = "Home Page", Icon = "home.png", TargetType = typeof(HomePage) };
+            var accelerometerPage = new PageItem() { Title = "Accelerometer", Icon = "accelerator.png", TargetType = typeof(AccelerometerPage) };
             var barometerPage = new PageItem() { Title = "Barometer", Icon = "", TargetType = typeof(BarometerPage) };
             var gyroscoperPage = new PageItem() { Title = "Gyroscope", Icon = "", TargetType = typeof(GyroscopePage) };
             var magnetometerPage = new PageItem() { Title = "Magnetometer", Icon = "", TargetType = typeof(MagnetometerPage) };
 
-
+            //Pøidání stránek do listu
             MenuList.Add(homePage);
             MenuList.Add(accelerometerPage);
             MenuList.Add(barometerPage);
@@ -36,7 +37,7 @@ namespace Senzory
 
 
             navigationDrawerList.ItemsSource = MenuList;
-
+            //Nastavení hlavní stránky
             Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(HomePage)));
         }
 

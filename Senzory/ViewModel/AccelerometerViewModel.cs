@@ -10,10 +10,12 @@ namespace Senzory.ViewModel
 {
     public class AccelerometerViewModel : INotifyPropertyChanged
     {
+        //privátní proměnné
         private double xAccelerationValue, yAccelerationValue, zAccelerationValue;
 
         public AccelerometerViewModel()
         {
+            //Command pro zapnutí snímání ze sensoru
             AccerelationStartCommand = new Command((object speed) =>
             {
                 if (!Accelerometer.IsMonitoring)
@@ -28,6 +30,7 @@ namespace Senzory.ViewModel
                     }
                 }
             });
+            //Command pro vypnutí snímání ze sensoru
             AccerelationStopCommand = new Command(() =>
             {
                 Accelerometer.Stop();
@@ -37,7 +40,7 @@ namespace Senzory.ViewModel
 
         }
 
-
+        //property pro X hodnotu
         public double XAccelerationValue
         {
 
@@ -49,7 +52,7 @@ namespace Senzory.ViewModel
             }
         }
 
-
+        //property pro Y hodnotu
         public double YAccelerationValue
         {
 
@@ -61,7 +64,7 @@ namespace Senzory.ViewModel
             }
         }
 
-
+        //property pro Y hodnotu
         public double ZAccelerationValue
         {
 
@@ -73,10 +76,11 @@ namespace Senzory.ViewModel
             }
         }
 
+        //Commandy
+        public Command AccerelationStopCommand { get; set; }
 
-        public ICommand AccerelationStopCommand { get; set; }
-
-        public ICommand AccerelationStartCommand { get; set; }
+        public Command AccerelationStartCommand { get; set; }
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -85,8 +89,9 @@ namespace Senzory.ViewModel
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
-
         
+
+        //Event pokud se změní nějaká hodnota, tak je pošle
         private void Accelerometer_ReadingChanged(object sender, AccelerometerChangedEventArgs e)
         {
             Device.BeginInvokeOnMainThread(() =>
